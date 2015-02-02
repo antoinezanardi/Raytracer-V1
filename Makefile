@@ -5,13 +5,13 @@
 ## Login   <zanard_a@epitech.net>
 ##
 ## Started on  Tue Oct 21 16:47:57 2014 Antoine Zanardi
-## Last update Mon Feb  2 11:00:42 2015 Antoine Zanardi
+## Last update Mon Feb  2 17:49:11 2015 Antoine Zanardi
 ##
 
 DEBUG	=	no
 
 ifeq ($(DEBUG), yes)
-CFLAGS	+=	-g
+CFLAGS	+=	-g -Wall -Wextra
 endif
 
 LIB_PA	=	./lib/my/
@@ -19,6 +19,10 @@ LIB_PA	=	./lib/my/
 NAME	=	rtv1
 
 SRCS	=	main.c \
+		error.c \
+		parsing.c \
+		parse_line.c \
+		fc.c \
 
 SRCS_LI	=	$(LIB_PA)my_getnbr.c \
 		$(LIB_PA)my_putchar.c \
@@ -31,12 +35,16 @@ OBJS	=	$(SRCS:.c=.o)
 
 OBJS_LI	=	$(SRCS_LI:.c=.o)
 
-INC	=	-I include/
+INC	=	-I include/ \
+		-I minilibX/ \
 
 LIB_CMP	=	$(LIB_PA)libmy.a
 
 CFLAGS	+=	$(INC)
 
+MLX	=	minilibx/libmlx_x86_64.a \
+		-L/usr/lib64/X11 -lXext -lX11 \
+		-lm
 
 all: $(LIB_CMP) $(NAME)
 
