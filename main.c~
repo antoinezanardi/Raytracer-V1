@@ -1,0 +1,15 @@
+/*
+** main.c for main in /home/zanard_a/rendu/Projets_TEK1/MUL_2014_rtv1
+**
+** Made by Antoine Zanardi
+** Login   <zanard_a@epitech.net>
+**
+** Started on  Mon Feb  2 10:54:17 2015 Antoine Zanardi
+** Last update Mon Feb  2 10:55:42 2015 Antoine Zanardi
+*/
+
+int		main()
+{
+
+  return (0);
+}
