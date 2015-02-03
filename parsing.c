@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 15:26:20 2015 Antoine Zanardi
-** Last update Mon Feb  2 17:54:15 2015 Antoine Zanardi
+** Last update Tue Feb  3 17:59:36 2015 Antoine Zanardi
 */
 
 #include	<sys/types.h>
@@ -18,6 +18,7 @@
 int		correct_form(char *str, int compt_str)
 {
   if (my_strcmp("SPHERE", str, compt_str) == 0 ||
+      my_strcmp("CONE", str, compt_str) == 0 ||
       my_strcmp("CYLINDRE", str, compt_str) == 0)
     return (0);
   else if (my_strcmp("PLAN", str, compt_str) == 0)
@@ -40,14 +41,18 @@ void		correct_file(char *str)
       pass_spaces(str, &compt_str);
       if (correct_form(str, compt_str) == 0)
 	correct_shape(str, &compt_str);
+      else if (correct_form(str, compt_str) == 1)
+	correct_plan(str, &compt_str);
+      else if (correct_form(str, compt_str) == 2)
+	correct_view(str, &compt_str);
     }
 }
 
-void		parsing(char *file)
+void		parsing(char *file, t_list **list)
 {
   int		fd;
   int		ret;
-  char		buffer[BUFFER_SIZE];
+  static char	buffer[BUFFER_SIZE];
 
   if ((fd = open(file, O_RDONLY)) == -1)
     my_putstr_error(3, 0);
@@ -55,4 +60,5 @@ void		parsing(char *file)
   buffer[ret] = '\0';
   close(fd);
   correct_file(buffer);
+  param_to_list(buffer, list);
 }

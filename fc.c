@@ -5,8 +5,10 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 16:15:03 2015 Antoine Zanardi
-** Last update Mon Feb  2 18:05:57 2015 Antoine Zanardi
+** Last update Tue Feb  3 17:23:39 2015 Antoine Zanardi
 */
+
+#include	<stdlib.h>
 
 void		pass_spaces(char *str, int *compt_str)
 {
@@ -22,7 +24,6 @@ int		my_strcmp(char *str, char *str2, int compt2)
   compt = 0;
   while (str[compt] != '\0')
     {
-      my_putchar(str2[compt2]);
       if (str2[compt2] == '\0' || str[compt] != str2[compt2])
 	return (1);
       else
@@ -32,4 +33,34 @@ int		my_strcmp(char *str, char *str2, int compt2)
 	}
     }
   return (0);
+}
+
+char		*pick_nb(char *str, int *compt_str)
+{
+  char		*dest;
+  int		compt_len;
+
+  compt_len = 0;
+  if (str[*compt_str] == '-')
+    {
+      compt_len++;
+      *compt_str = *compt_str + 1;
+    }
+  while (str[*compt_str] != ',')
+    {
+      *compt_str = *compt_str + 1;
+      compt_len++;
+    }
+  *compt_str = *compt_str - compt_len;
+  if ((dest = malloc(sizeof(char) * compt_len + 1)) == NULL)
+    return (NULL);
+  compt_len = 0;
+  while (str[*compt_str] != ',')
+    {
+      dest[compt_len] = str[*compt_str];
+      *compt_str = *compt_str + 1;
+      compt_len++;
+    }
+  dest[compt_len] = '\0';
+  return (dest);
 }

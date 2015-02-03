@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 14:02:41 2015 Antoine Zanardi
-** Last update Mon Feb  2 17:51:05 2015 Antoine Zanardi
+** Last update Mon Feb  2 20:07:53 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -25,7 +25,7 @@ void		my_putstr_error2(int error, int nb)
 void		my_putstr_error(int error, int nb)
 {
   if (error == 1)
-    my_putstr("Usage : ./rtv1 file_scene\n");
+    my_putstr("Usage : ./rtv1 file_scene.rtv\n");
   else if (error == 2)
     my_putstr("Environement couldn't be found\n");
   else if (error == 3)

@@ -5,7 +5,7 @@
 ## Login   <zanard_a@epitech.net>
 ##
 ## Started on  Tue Oct 21 16:47:57 2014 Antoine Zanardi
-## Last update Mon Feb  2 17:49:11 2015 Antoine Zanardi
+## Last update Tue Feb  3 18:08:50 2015 Antoine Zanardi
 ##
 
 DEBUG	=	no
@@ -23,13 +23,14 @@ SRCS	=	main.c \
 		parsing.c \
 		parse_line.c \
 		fc.c \
+		param_to_list.c \
+		v_to_elem.c \
 
 SRCS_LI	=	$(LIB_PA)my_getnbr.c \
 		$(LIB_PA)my_putchar.c \
 		$(LIB_PA)my_put_nbr.c \
 		$(LIB_PA)my_putstr.c \
 		$(LIB_PA)my_strlen.c \
-		$(LIB_PA)my_lists.c \
 
 OBJS	=	$(SRCS:.c=.o)
 

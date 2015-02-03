@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 10:54:17 2015 Antoine Zanardi
-** Last update Mon Feb  2 16:14:05 2015 Antoine Zanardi
+** Last update Tue Feb  3 18:16:14 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -32,10 +32,13 @@ void		init_my_mlx(t_windows *win)
 int		main(int argc, char **argv)
 {
   t_windows	win;
+  t_list	*list;
 
   if (argc != 2)
     my_putstr_error(1, 0);
-  parsing(argv[1]);
+  list = NULL;
+  parsing(argv[1], &list);
+  show_my_list(&list);
   init_my_mlx(&win);
   mlx_key_hook(win.win_ptr, &escape_hook, 0);
   win.data = mlx_get_data_addr(win.img_ptr, &win.bpp, &win.line, &win.endian);
