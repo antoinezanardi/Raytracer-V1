@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Tue Feb  3 17:08:23 2015 Antoine Zanardi
-** Last update Tue Feb  3 18:10:09 2015 Antoine Zanardi
+** Last update Tue Feb  3 18:56:51 2015 Antoine Zanardi
 */
 
 #include	"my.h"
@@ -23,6 +23,7 @@ void		coor_to_elem(char *str, int *compt_str, t_list *elem, char mde)
   else if (mde == 'r')
     elem->ray = my_getnbr(pick_nb(str, compt_str));
   (*compt_str)++;
+  pass_spaces(str, compt_str);
 }
 
 void		color_to_elem(char *str, int *compt_str, t_list *elem)
