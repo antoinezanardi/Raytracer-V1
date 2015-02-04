@@ -5,14 +5,28 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 10:01:49 2015 Antoine Zanardi
-** Last update Wed Feb  4 17:40:40 2015 Antoine Zanardi
+** Last update Wed Feb  4 21:42:28 2015 Antoine Zanardi
 */
 
 #include	<math.h>
 #include	"rtv1.h"
 #include	"my.h"
 
-void		treat_ball(t_vec vec, t_kist **kist, t_list *ball)
+void		treat_plan(t_vec vec, t_kist **kist, t_list *plan, t_vec view)
+{
+  double	k;
+
+  if (vec.z == 0.0000001)
+    add_klist(kist, 0.0, plan->color);
+  else
+    {
+      k = -((view.z - (double)plan->z) / vec.z);
+      if (k >= 0)
+	add_klist(kist, k, plan->color);
+    }
+}
+
+void		treat_ball(t_vec vec, t_kist **kist, t_list *ball, t_vec view)
 {
   t_eq		eq;
   double	k;
@@ -20,9 +34,8 @@ void		treat_ball(t_vec vec, t_kist **kist, t_list *ball)
   double	delta;
 
   eq.a = pow(vec.x, 2.0) + pow(vec.y, 2.0) + pow(vec.z, 2.0);
-  eq.b = 2.0 * ((double)ball->x * vec.x + (double)ball->y * vec.y +
-		(double)ball->z * vec.z);
-  eq.c = pow(ball->x, 2.0) + pow(ball->y, 2.0) + pow(ball->z, 2.0) -
+  eq.b = 2.0 * (XB * vec.x + YB * vec.y + ZB * vec.z);
+  eq.c = pow(XB, 2.0) + pow(YB, 2.0) + pow(ZB, 2.0) -
     pow(ball->ray, 2.0);
   delta = pow(eq.b, 2.0) - 4.0 * eq.a * eq.c;
   if (delta == 0)

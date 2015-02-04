@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 11:03:03 2015 Antoine Zanardi
-** Last update Wed Feb  4 17:27:01 2015 Antoine Zanardi
+** Last update Wed Feb  4 18:58:49 2015 Antoine Zanardi
 */
 
 #ifndef		RTV1_H_
@@ -14,6 +14,9 @@
 # define	HAUT		600
 # define	LARG		800
 # define	BUFFER_SIZE	4096
+# define	XB		(view.x - (double)ball->x)
+# define	YB		(view.y - (double)ball->y)
+# define	ZB		(view.z - (double)ball->z)
 
 typedef	struct	s_windows
 {
@@ -92,7 +95,8 @@ void		correct_view(char *, int *);
 void		pass_spaces(char *, int *);
 void		parsing(char *, t_list **);
 void		my_putstr_error(int, int);
-void		treat_ball(t_vec, t_kist **, t_list *);
+void		treat_plan(t_vec, t_kist **, t_list *, t_vec);
+void		treat_ball(t_vec, t_kist **, t_list *, t_vec);
 t_vec		treat_vec(int, int);
 
 #endif		/* !RTV1_H_ */

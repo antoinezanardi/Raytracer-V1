@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 09:33:50 2015 Antoine Zanardi
-** Last update Wed Feb  4 17:28:02 2015 Antoine Zanardi
+** Last update Wed Feb  4 21:40:45 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -25,16 +25,22 @@ t_vec		treat_vec(int x, int y)
 unsigned int	calc_pix(t_fen fen, t_kist *k, t_list **obj)
 {
   t_vec		vec;
+  t_vec		view;
   t_kist	*k_list;
   t_list	*tmp;
 
+  view.x = -300.0;
+  view.y = 0.0;
+  view.z = 40.0;
   tmp = *obj;
   k_list = NULL;
   vec = treat_vec(fen.x, fen.y);
   while (tmp != NULL)
     {
       if (my_strcmp("SPHERE", tmp->forme, 0) == 0)
-	treat_ball(vec, &k_list, tmp);
+	treat_ball(vec, &k_list, tmp, view);
+      else if (my_strcmp("PLAN", tmp->forme, 0) == 0)
+	treat_plan(vec, &k_list, tmp, view);
       tmp = tmp->next;
     }
   if (k_list != NULL)
