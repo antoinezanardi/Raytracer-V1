@@ -5,7 +5,7 @@
 ## Login   <zanard_a@epitech.net>
 ##
 ## Started on  Tue Oct 21 16:47:57 2014 Antoine Zanardi
-## Last update Tue Feb  3 18:08:50 2015 Antoine Zanardi
+## Last update Wed Feb  4 15:36:14 2015 Antoine Zanardi
 ##
 
 DEBUG	=	no
@@ -25,6 +25,10 @@ SRCS	=	main.c \
 		fc.c \
 		param_to_list.c \
 		v_to_elem.c \
+		treat.c \
+		treat_form.c \
+		treat_k.c \
+		picture.c \
 
 SRCS_LI	=	$(LIB_PA)my_getnbr.c \
 		$(LIB_PA)my_putchar.c \

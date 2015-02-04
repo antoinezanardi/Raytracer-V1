@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 10:54:17 2015 Antoine Zanardi
-** Last update Tue Feb  3 19:04:11 2015 Antoine Zanardi
+** Last update Wed Feb  4 17:12:37 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -18,6 +18,13 @@ int		escape_hook(int keycode)
   if (keycode == 65307)
     exit(0);
   return (0);
+}
+
+void		init_list(t_list **list, int argc)
+{
+  if (argc != 2)
+    my_putstr_error(1, 0);
+  *list = NULL;
 }
 
 void		init_my_mlx(t_windows *win)
@@ -34,13 +41,13 @@ int		main(int argc, char **argv)
   t_windows	win;
   t_list	*list;
 
-  if (argc != 2)
-    my_putstr_error(1, 0);
-  list = NULL;
+  init_list(&list, argc);
   parsing(argv[1], &list);
   init_my_mlx(&win);
   mlx_key_hook(win.win_ptr, &escape_hook, 0);
   win.data = mlx_get_data_addr(win.img_ptr, &win.bpp, &win.line, &win.endian);
+  treat(&win, &list);
+  mlx_put_image_to_window(win.mlx_ptr, win.win_ptr, win.img_ptr, 0, 0);
   mlx_loop(win.mlx_ptr);
   return (0);
 }

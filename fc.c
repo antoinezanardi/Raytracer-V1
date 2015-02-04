@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 16:15:03 2015 Antoine Zanardi
-** Last update Tue Feb  3 17:23:39 2015 Antoine Zanardi
+** Last update Wed Feb  4 17:46:34 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -43,8 +43,8 @@ char		*pick_nb(char *str, int *compt_str)
   compt_len = 0;
   if (str[*compt_str] == '-')
     {
-      compt_len++;
       *compt_str = *compt_str + 1;
+      compt_len++;
     }
   while (str[*compt_str] != ',')
     {
@@ -57,8 +57,7 @@ char		*pick_nb(char *str, int *compt_str)
   compt_len = 0;
   while (str[*compt_str] != ',')
     {
-      dest[compt_len] = str[*compt_str];
-      *compt_str = *compt_str + 1;
+      dest[compt_len] = str[(*compt_str)++];
       compt_len++;
     }
   dest[compt_len] = '\0';
