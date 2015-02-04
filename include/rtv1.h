@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 11:03:03 2015 Antoine Zanardi
-** Last update Wed Feb  4 18:58:49 2015 Antoine Zanardi
+** Last update Thu Feb  5 00:27:35 2015 Antoine Zanardi
 */
 
 #ifndef		RTV1_H_
@@ -14,9 +14,9 @@
 # define	HAUT		600
 # define	LARG		800
 # define	BUFFER_SIZE	4096
-# define	XB		(view.x - (double)ball->x)
-# define	YB		(view.y - (double)ball->y)
-# define	ZB		(view.z - (double)ball->z)
+# define	XB		(view.x - ball->x)
+# define	YB		(view.y - ball->y)
+# define	ZB		(view.z - ball->z)
 
 typedef	struct	s_windows
 {

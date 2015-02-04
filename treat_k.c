@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 13:38:57 2015 Antoine Zanardi
-** Last update Wed Feb  4 16:54:22 2015 Antoine Zanardi
+** Last update Wed Feb  4 23:47:05 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -23,6 +23,17 @@ void		convert_my_color(t_kist *elem, char *color)
     elem->green = 255;
   else if (my_strcmp("BLUE", color, 0) == 0)
     elem->blue = 255;
+  else if (my_strcmp("WHITE", color, 0) == 0)
+    {
+      elem->red = 255;
+      elem->green = 255;
+      elem->blue = 255;
+    }
+  else if (my_strcmp("YELLOW", color, 0) == 0)
+    {
+      elem->red = 255;
+      elem->green = 255;
+    }
 }
 
 unsigned int	find_low_k(t_kist **list, t_kist *k_low)
@@ -34,13 +45,13 @@ unsigned int	find_low_k(t_kist **list, t_kist *k_low)
   bool = 0;
   while (tmp != NULL)
     {
-      if (bool == 0 && tmp->k > 0)
+      if (bool == 1 && tmp->k < k_low->k)
+	k_low = tmp;
+      else if (tmp->k > 0.0 && bool == 0)
 	{
 	  k_low = tmp;
 	  bool = 1;
 	}
-      else if (tmp->k < k_low->k && tmp->k > 0)
-	k_low = tmp;
       tmp = tmp->next;
     }
   return (get_my_color(k_low->red, k_low->green, k_low->blue));
