@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Tue Feb  3 17:08:23 2015 Antoine Zanardi
-** Last update Tue Feb  3 18:56:51 2015 Antoine Zanardi
+** Last update Thu Feb  5 09:54:53 2015 Antoine Zanardi
 */
 
 #include	"my.h"
@@ -22,6 +22,12 @@ void		coor_to_elem(char *str, int *compt_str, t_list *elem, char mde)
     elem->z = my_getnbr(pick_nb(str, compt_str));
   else if (mde == 'r')
     elem->ray = my_getnbr(pick_nb(str, compt_str));
+  else if (mde == 'a')
+    elem->x_r = my_getnbr(pick_nb(str, compt_str));
+  else if (mde == 'b')
+    elem->y_r = my_getnbr(pick_nb(str, compt_str));
+  else if (mde == 'c')
+    elem->z_r = my_getnbr(pick_nb(str, compt_str));
   (*compt_str)++;
   pass_spaces(str, compt_str);
 }

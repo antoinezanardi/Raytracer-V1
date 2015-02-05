@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Tue Feb  3 09:53:05 2015 Antoine Zanardi
-** Last update Wed Feb  4 15:22:00 2015 Antoine Zanardi
+** Last update Thu Feb  5 09:49:39 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -28,6 +28,9 @@ int		view_to_list(char *str, int *compt_str, t_list **list)
   coor_to_elem(str, compt_str, elem, 'y');
   coor_to_elem(str, compt_str, elem, 'z');
   coor_to_elem(str, compt_str, elem, 'r');
+  coor_to_elem(str, compt_str, elem, 'a');
+  coor_to_elem(str, compt_str, elem, 'b');
+  coor_to_elem(str, compt_str, elem, 'c');
   elem->next = *list;
   elem->prev = NULL;
   if (*list != NULL)
@@ -48,6 +51,9 @@ int		plan_to_list(char *str, int *compt_str, t_list **list)
   coor_to_elem(str, compt_str, elem, 'x');
   coor_to_elem(str, compt_str, elem, 'y');
   coor_to_elem(str, compt_str, elem, 'z');
+  coor_to_elem(str, compt_str, elem, 'a');
+  coor_to_elem(str, compt_str, elem, 'b');
+  coor_to_elem(str, compt_str, elem, 'c');
   color_to_elem(str, compt_str, elem);
   elem->next = *list;
   elem->prev = NULL;
@@ -67,14 +73,15 @@ int		form_to_list(char *str, int *compt_str, t_list **list)
     elem->forme = "SPHERE";
   else if (my_strcmp("CONE", str, *compt_str) == 0)
     elem->forme = "CONE";
-  else
-    elem->forme = "CYLINDRE";
   while (str[*compt_str] != ' ' && str[*compt_str] != '\t')
     *compt_str = *compt_str + 1;
   coor_to_elem(str, compt_str, elem, 'x');
   coor_to_elem(str, compt_str, elem, 'y');
   coor_to_elem(str, compt_str, elem, 'z');
   coor_to_elem(str, compt_str, elem, 'r');
+  coor_to_elem(str, compt_str, elem, 'a');
+  coor_to_elem(str, compt_str, elem, 'b');
+  coor_to_elem(str, compt_str, elem, 'c');
   color_to_elem(str, compt_str, elem);
   elem->next = *list;
   elem->prev = NULL;

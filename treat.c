@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 09:33:50 2015 Antoine Zanardi
-** Last update Thu Feb  5 00:26:06 2015 Antoine Zanardi
+** Last update Thu Feb  5 17:11:37 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -31,7 +31,7 @@ unsigned int	calc_pix(t_fen fen, t_kist *k, t_list **obj)
 
   view.x = -300.0;
   view.y = 0.0;
-  view.z = 30.0;
+  view.z = 40.0;
   tmp = *obj;
   k_list = NULL;
   vec = treat_vec(fen.x, fen.y);
@@ -44,7 +44,7 @@ unsigned int	calc_pix(t_fen fen, t_kist *k, t_list **obj)
       tmp = tmp->next;
     }
   if (k_list != NULL)
-    return (find_low_k(&k_list, k));
+    return (find_low_k(&k_list, k, vec, view));
   else
     return (0);
 }

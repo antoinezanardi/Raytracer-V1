@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 17:08:36 2015 Antoine Zanardi
-** Last update Tue Feb  3 17:59:31 2015 Antoine Zanardi
+** Last update Thu Feb  5 09:46:03 2015 Antoine Zanardi
 */
 
 #include	"rtv1.h"
@@ -53,7 +53,7 @@ void		correct_plan(char *str, int *compt_str)
   while (str[*compt_str] != ' ' && str[*compt_str] != '\t' &&
 	 str[*compt_str] != '\0')
     *compt_str = *compt_str + 1;
-  while (compt_shape < 3)
+  while (compt_shape < 6)
     {
       pass_spaces(str, compt_str);
       str_is_num(str, compt_str);
@@ -79,7 +79,7 @@ void		correct_view(char *str, int *compt_str)
   while (str[*compt_str] != ' ' && str[*compt_str] != '\t' &&
 	 str[*compt_str] != '\0')
     *compt_str = *compt_str + 1;
-  while (compt_shape < 4)
+  while (compt_shape < 7)
     {
       pass_spaces(str, compt_str);
       str_is_num(str, compt_str);
@@ -104,7 +104,7 @@ void		correct_shape(char *str, int *compt_str)
   while (str[*compt_str] != ' ' && str[*compt_str] != '\t' &&
 	 str[*compt_str] != '\0')
     *compt_str = *compt_str + 1;
-  while (compt_shape < 4)
+  while (compt_shape < 7)
     {
       pass_spaces(str, compt_str);
       str_is_num(str, compt_str);
