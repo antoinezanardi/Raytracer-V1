@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 11:03:03 2015 Antoine Zanardi
-** Last update Thu Feb  5 18:23:02 2015 Antoine Zanardi
+** Last update Fri Feb  6 15:53:08 2015 Antoine Zanardi
 */
 
 #ifndef		RTV1_H_
@@ -48,10 +48,10 @@ typedef	struct	s_list
 typedef	struct	s_kist
 {
   double	k;
-  char		*forme;
   unsigned char	red;
   unsigned char	green;
   unsigned char	blue;
+  struct s_list	*obj;
   struct s_kist *next;
   struct s_kist	*prev;
 }		t_kist;
@@ -79,14 +79,18 @@ typedef	struct	s_fen
 char		*pick_nb(char *, int *);
 unsigned int	get_my_color(unsigned char, unsigned char, unsigned char);
 unsigned int	find_low_k(t_kist **, t_kist *, t_vec, t_vec);
-unsigned int	calc_pix(t_fen, t_kist *, t_list **);
+unsigned int	calc_pix(t_fen, t_list **, t_kist **);
 int		my_strcmp(char *, char *, int);
 int		add_top_list(t_list **, int);
 int		add_bot_list(t_list **, int);
 int		form_to_list(char *, int *, t_list **);
 int		correct_form(char *, int);
 int		put_pix_picture(t_windows *, int, int, int);
-int		add_klist(t_kist **, double, char *, char *);
+int		add_klist(t_kist **, double, t_list *);
+void		my_notice(void);
+void		rotation_x(double *, double *, double);
+void		rotation_y(double *, double *, double);
+void		rotation_z(double *, double *, double);
 void		treat(t_windows *, t_list **);
 void		param_to_list(char *, t_list **);
 void		coor_to_elem(char *, int *, t_list *, char);
@@ -102,8 +106,9 @@ void		parsing(char *, t_list **);
 void		my_putstr_error(int, int);
 void		treat_plan(t_vec, t_kist **, t_list *, t_vec);
 void		treat_ball(t_vec, t_kist **, t_list *, t_vec);
+void		treat_cy(t_vec, t_kist **, t_list *, t_vec);
 void		movement(t_vec *, t_list *, t_vec *);
-void		light_my_color(t_kist *, t_vec, t_vec, unsigned int *);
+unsigned int	light_my_color(t_kist *, t_vec, t_vec);
 t_vec		check_normal(t_kist *, t_vec);
 t_vec		treat_vec(int, int);
 

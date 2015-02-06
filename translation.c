@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Thu Feb  5 10:00:52 2015 Antoine Zanardi
-** Last update Thu Feb  5 16:24:31 2015 Antoine Zanardi
+** Last update Fri Feb  6 11:26:42 2015 Antoine Zanardi
 */
 
 #include	<math.h>

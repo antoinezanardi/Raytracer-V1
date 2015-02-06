@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 13:38:57 2015 Antoine Zanardi
-** Last update Thu Feb  5 18:13:48 2015 Antoine Zanardi
+** Last update Fri Feb  6 15:05:30 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -39,7 +39,6 @@ void		convert_my_color(t_kist *elem, char *color)
 unsigned int	find_low_k(t_kist **list, t_kist *k_low, t_vec vec, t_vec view)
 {
   t_kist	*tmp;
-  unsigned int	color;
   int		bool;
 
   tmp = *list;
@@ -48,27 +47,25 @@ unsigned int	find_low_k(t_kist **list, t_kist *k_low, t_vec vec, t_vec view)
     {
       if (bool == 1 && tmp->k < k_low->k)
 	k_low = tmp;
-      else if (tmp->k > 0.0 && bool == 0)
+      else if (tmp->k > 0.000001 && bool == 0)
 	{
 	  k_low = tmp;
 	  bool = 1;
 	}
       tmp = tmp->next;
     }
-  color = get_my_color(k_low->red, k_low->green, k_low->blue);
-  light_my_color(k_low, vec, view, &color);
-  return (color);
+  return (light_my_color(k_low, vec, view));
 }
 
-int		add_klist(t_kist **list, double k, char *color, char *forme)
+int		add_klist(t_kist **list, double k, t_list *obj)
 {
   t_kist	*elem;
 
   if ((elem = malloc(sizeof(t_kist))) == NULL)
     return (0);
   elem->k = k;
-  elem->forme = forme;
-  convert_my_color(elem, color);
+  convert_my_color(elem, obj->color);
+  elem->obj = obj;
   elem->next = *list;
   elem->prev = NULL;
   if (*list != NULL)

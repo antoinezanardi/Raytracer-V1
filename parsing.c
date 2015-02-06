@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 15:26:20 2015 Antoine Zanardi
-** Last update Tue Feb  3 17:59:36 2015 Antoine Zanardi
+** Last update Fri Feb  6 16:13:46 2015 Antoine Zanardi
 */
 
 #include	<sys/types.h>
@@ -23,8 +23,7 @@ int		correct_form(char *str, int compt_str)
     return (0);
   else if (my_strcmp("PLAN", str, compt_str) == 0)
     return (1);
-  else if (my_strcmp("VIEW", str, compt_str) == 0 ||
-	   (my_strcmp("LIGHT", str, compt_str) == 0))
+  else if (my_strcmp("VIEW", str, compt_str) == 0)
     return (2);
   else
     my_putstr_error(4, compt_str);
@@ -61,4 +60,5 @@ void		parsing(char *file, t_list **list)
   close(fd);
   correct_file(buffer);
   param_to_list(buffer, list);
+  check_the_view(list);
 }

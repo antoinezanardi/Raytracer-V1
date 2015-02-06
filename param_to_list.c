@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Tue Feb  3 09:53:05 2015 Antoine Zanardi
-** Last update Thu Feb  5 09:49:39 2015 Antoine Zanardi
+** Last update Fri Feb  6 14:25:43 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -71,8 +71,8 @@ int		form_to_list(char *str, int *compt_str, t_list **list)
     return (0);
   if (my_strcmp("SPHERE", str, *compt_str) == 0)
     elem->forme = "SPHERE";
-  else if (my_strcmp("CONE", str, *compt_str) == 0)
-    elem->forme = "CONE";
+  else if (my_strcmp("CYLINDRE", str, *compt_str) == 0)
+    elem->forme = "CYLINDRE";
   while (str[*compt_str] != ' ' && str[*compt_str] != '\t')
     *compt_str = *compt_str + 1;
   coor_to_elem(str, compt_str, elem, 'x');

@@ -5,13 +5,18 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 10:54:17 2015 Antoine Zanardi
-** Last update Wed Feb  4 17:12:37 2015 Antoine Zanardi
+** Last update Fri Feb  6 15:45:25 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
 #include	<unistd.h>
 #include	"mlx.h"
 #include	"rtv1.h"
+
+int		my_expose(t_windows *win)
+{
+  mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img_ptr, 0, 0);
+}
 
 int		escape_hook(int keycode)
 {
@@ -20,10 +25,12 @@ int		escape_hook(int keycode)
   return (0);
 }
 
-void		init_list(t_list **list, int argc)
+void		init_list(t_list **list, int argc, char **argv)
 {
   if (argc != 2)
     my_putstr_error(1, 0);
+  if (my_strcmp("--help", argv[1], 0) == 0)
+    my_notice();
   *list = NULL;
 }
 
@@ -41,13 +48,14 @@ int		main(int argc, char **argv)
   t_windows	win;
   t_list	*list;
 
-  init_list(&list, argc);
+  init_list(&list, argc, argv);
   parsing(argv[1], &list);
   init_my_mlx(&win);
   mlx_key_hook(win.win_ptr, &escape_hook, 0);
   win.data = mlx_get_data_addr(win.img_ptr, &win.bpp, &win.line, &win.endian);
   treat(&win, &list);
   mlx_put_image_to_window(win.mlx_ptr, win.win_ptr, win.img_ptr, 0, 0);
+  mlx_expose_hook(win.win_ptr, &my_expose, &win);
   mlx_loop(win.mlx_ptr);
   return (0);
 }
