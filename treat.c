@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 09:33:50 2015 Antoine Zanardi
-** Last update Fri Feb  6 16:13:35 2015 Antoine Zanardi
+** Last update Fri Feb  6 18:11:19 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -22,18 +22,19 @@ t_vec		treat_vec(int x, int y)
   return (vec);
 }
 
-unsigned int	calc_pix(t_fen fen, t_list **obj, t_kist **k_list)
+unsigned int	calc_pix(t_fen fen, t_list **obj, t_kist **k_list, t_list oeil)
 {
   t_kist	k;
   t_vec		vec;
   t_vec		view;
   t_list	*tmp;
 
-  view.x = -800.0;
-  view.y = 0.0;
-  view.z = 40.0;
+  convert_view(oeil, &view);
   tmp = *obj;
   vec = treat_vec(fen.x, fen.y);
+  rotation_x(&(vec.y), &(vec.z), D_R(oeil.x_r));
+  rotation_y(&(vec.x), &(vec.z), D_R(oeil.y_r));
+  rotation_z(&(vec.x), &(vec.y), D_R(oeil.z_r));
   while (tmp != NULL)
     {
       if (my_strcmp("SPHERE", tmp->forme, 0) == 0)
@@ -58,14 +59,14 @@ void		treat(t_windows *win, t_list **obj)
   int		color;
 
   fen.y = 0;
-  make_my_view(obj, &view);
+  view = make_my_view(obj);
   while (fen.y < HAUT)
     {
       fen.x = 0;
       while (fen.x < LARG)
 	{
 	  k_list = NULL;
-	  color = calc_pix(fen, obj, &k_list);
+	  color = calc_pix(fen, obj, &k_list, view);
 	  put_pix_picture(win, fen.x, fen.y, color);
 	  fen.x++;
 	}

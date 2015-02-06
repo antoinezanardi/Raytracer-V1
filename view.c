@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Fri Feb  6 15:56:00 2015 Antoine Zanardi
-** Last update Fri Feb  6 16:10:29 2015 Antoine Zanardi
+** Last update Fri Feb  6 18:21:23 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -14,19 +14,41 @@
 
 void		check_the_view(t_list **obj)
 {
+  int		bool;
+  t_list	*tmp;
+
+  tmp = *obj;
+  bool = 0;
+  while (tmp != NULL)
+    {
+      if (bool == 1 && my_strcmp("VIEW", tmp->forme, 0) == 0)
+	 my_putstr_error(9, 0);
+      else if (bool == 0 && my_strcmp("VIEW", tmp->forme, 0) == 0)
+	bool = 1;
+      tmp = tmp->next;
+    }
+  if (bool == 0)
+    my_putstr_error(8, 0);
+}
+
+void		convert_view(t_list oeil, t_vec *view)
+{
+  view->x = (double)oeil.x;
+  view->y = (double)oeil.y;
+  view->z = (double)oeil.z;
+}
+
+t_list		make_my_view(t_list **obj)
+{
+  t_list	null;
   t_list	*tmp;
 
   tmp = *obj;
   while (tmp != NULL)
     {
       if (my_strcmp("VIEW", tmp->forme, 0) == 0)
-	return;
+	return (*tmp);
       tmp = tmp->next;
     }
-  my_putstr_error(8, 0);
-}
-
-void		make_my_view(t_list **obj, t_list *view)
-{
-  //  check_the_view(obj, view);
+  return(null);
 }

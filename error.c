@@ -5,16 +5,24 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 14:02:41 2015 Antoine Zanardi
-** Last update Fri Feb  6 16:03:14 2015 Antoine Zanardi
+** Last update Fri Feb  6 18:34:48 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
 #include	"my.h"
 
+void		my_exemple(void)
+{
+  my_putstr("VIEW -800, 0, 40, 0, 0, 0,\n");
+  my_putstr("PLAN 0, 0, -100, 0, 0, 0, BLUE\n");
+  my_putstr("SPHERE 0, 0, 300, 100, 0, 0, 0, WHITE\n");
+  exit(0);
+}
+
 void		my_notice(void)
 {
   my_putstr("\n                     ~ HOW TO USE ~\n");
-  my_putstr("\nFORME | X | Y | Z | RAY | X_R | Y_R | Z_R | COLOR\n");
+  my_putstr("\nFORME : X | Y | Z | RAY | X_R | Y_R | Z_R | COLOR\n");
   my_putstr("FORME : You can choose between : SPHERE / PLAN\n");
   my_putstr("X / Y / Z : Position of the form\n");
   my_putstr("RAY : ONLY for sphere, cylindre, cone\n");
@@ -22,6 +30,9 @@ void		my_notice(void)
   //  my_putstr("BRI : Coeff between 0 & 1 of how bright the object is\n");
   // my_putstr("HT : Hauteur : ONLY for the cylindre and cone\n");
   my_putstr("COLOR : Choose : BLACK / WHITE / BLUE / RED / GREEN / YELLOW\n\n");
+  my_putstr("VIEW :  X | Y | Z | X_R | Y_R | Z_R \n");
+  my_putstr("X / Y / Z : Position of the point of view\n");
+  my_putstr("X_R / Y_R / Z_R : Rotate in those coordinates\n\n");
   exit(0);
 }
 
@@ -35,6 +46,8 @@ void		my_putstr_error2(int error, int nb)
     }
   else if (error == 8)
     my_putstr("A point of view has to be set\n");
+  else if (error == 9)
+    my_putstr("Multiple points of view can't be set\n");
   exit(1);
 }
 

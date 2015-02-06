@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 10:54:17 2015 Antoine Zanardi
-** Last update Fri Feb  6 15:45:25 2015 Antoine Zanardi
+** Last update Fri Feb  6 18:35:15 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -16,6 +16,7 @@
 int		my_expose(t_windows *win)
 {
   mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img_ptr, 0, 0);
+  return (0);
 }
 
 int		escape_hook(int keycode)
@@ -31,6 +32,8 @@ void		init_list(t_list **list, int argc, char **argv)
     my_putstr_error(1, 0);
   if (my_strcmp("--help", argv[1], 0) == 0)
     my_notice();
+  else if (my_strcmp("--exemple", argv[1], 0) == 0)
+    my_exemple();
   *list = NULL;
 }
 

@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 17:08:36 2015 Antoine Zanardi
-** Last update Thu Feb  5 09:46:03 2015 Antoine Zanardi
+** Last update Fri Feb  6 18:33:51 2015 Antoine Zanardi
 */
 
 #include	"rtv1.h"
@@ -33,9 +33,7 @@ void		str_is_color(char *str, int *compt_str)
       my_strcmp("RED", str, *compt_str) == 0 ||
       my_strcmp("GREEN", str, *compt_str) == 0 ||
       my_strcmp("BLUE", str, *compt_str) == 0 ||
-      my_strcmp("YELLOW", str, *compt_str) == 0 ||
-      my_strcmp("PURPLE", str, *compt_str) == 0 ||
-      my_strcmp("GREY", str, *compt_str) == 0)
+      my_strcmp("YELLOW", str, *compt_str) == 0)
     {
       while (str[*compt_str] >= 'A' && str[*compt_str] <= 'Z')
 	*compt_str = *compt_str + 1;
@@ -79,12 +77,14 @@ void		correct_view(char *str, int *compt_str)
   while (str[*compt_str] != ' ' && str[*compt_str] != '\t' &&
 	 str[*compt_str] != '\0')
     *compt_str = *compt_str + 1;
-  while (compt_shape < 7)
+  while (compt_shape < 6)
     {
       pass_spaces(str, compt_str);
       str_is_num(str, compt_str);
       if (str[*compt_str] == ',')
 	*compt_str = *compt_str + 1;
+      else
+	my_putstr_error(5, *compt_str);
       compt_shape++;
     }
   pass_spaces(str, compt_str);

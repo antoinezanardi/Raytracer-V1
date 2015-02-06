@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 11:03:03 2015 Antoine Zanardi
-** Last update Fri Feb  6 15:53:08 2015 Antoine Zanardi
+** Last update Fri Feb  6 18:35:55 2015 Antoine Zanardi
 */
 
 #ifndef		RTV1_H_
@@ -32,17 +32,16 @@ typedef	struct	s_windows
 
 typedef	struct	s_list
 {
-  int		x;
-  int		y;
-  int		z;
-  int		ray;
-  int		x_r;
-  int		y_r;
-  int		z_r;
+  double	x;
+  double	y;
+  double	z;
+  double	ray;
+  double	x_r;
+  double	y_r;
+  double	z_r;
   char		*forme;
   char		*color;
   struct s_list	*next;
-  struct s_list	*prev;
 }		t_list;
 
 typedef	struct	s_kist
@@ -79,7 +78,8 @@ typedef	struct	s_fen
 char		*pick_nb(char *, int *);
 unsigned int	get_my_color(unsigned char, unsigned char, unsigned char);
 unsigned int	find_low_k(t_kist **, t_kist *, t_vec, t_vec);
-unsigned int	calc_pix(t_fen, t_list **, t_kist **);
+unsigned int	calc_pix(t_fen, t_list **, t_kist **, t_list);
+int		my_expose(t_windows *);
 int		my_strcmp(char *, char *, int);
 int		add_top_list(t_list **, int);
 int		add_bot_list(t_list **, int);
@@ -87,7 +87,9 @@ int		form_to_list(char *, int *, t_list **);
 int		correct_form(char *, int);
 int		put_pix_picture(t_windows *, int, int, int);
 int		add_klist(t_kist **, double, t_list *);
+t_list		make_my_view(t_list **);
 void		my_notice(void);
+void		my_exemple(void);
 void		rotation_x(double *, double *, double);
 void		rotation_y(double *, double *, double);
 void		rotation_z(double *, double *, double);
@@ -108,6 +110,8 @@ void		treat_plan(t_vec, t_kist **, t_list *, t_vec);
 void		treat_ball(t_vec, t_kist **, t_list *, t_vec);
 void		treat_cy(t_vec, t_kist **, t_list *, t_vec);
 void		movement(t_vec *, t_list *, t_vec *);
+void		check_the_view(t_list **);
+void		convert_view(t_list, t_vec *);
 unsigned int	light_my_color(t_kist *, t_vec, t_vec);
 t_vec		check_normal(t_kist *, t_vec);
 t_vec		treat_vec(int, int);

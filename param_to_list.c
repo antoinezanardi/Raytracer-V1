@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Tue Feb  3 09:53:05 2015 Antoine Zanardi
-** Last update Fri Feb  6 14:25:43 2015 Antoine Zanardi
+** Last update Fri Feb  6 17:29:33 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -18,23 +18,16 @@ int		view_to_list(char *str, int *compt_str, t_list **list)
 
   if ((elem = malloc(sizeof(t_list))) == NULL)
     return (0);
-  if (my_strcmp("VIEW", str, *compt_str) == 0)
-    elem->forme = "VIEW";
-  else
-    elem->forme = "LIGHT";
+  elem->forme = "VIEW";
   while (str[*compt_str] != ' ' && str[*compt_str] != '\t')
     *compt_str = *compt_str + 1;
   coor_to_elem(str, compt_str, elem, 'x');
   coor_to_elem(str, compt_str, elem, 'y');
   coor_to_elem(str, compt_str, elem, 'z');
-  coor_to_elem(str, compt_str, elem, 'r');
   coor_to_elem(str, compt_str, elem, 'a');
   coor_to_elem(str, compt_str, elem, 'b');
   coor_to_elem(str, compt_str, elem, 'c');
   elem->next = *list;
-  elem->prev = NULL;
-  if (*list != NULL)
-    (*list)->prev = elem;
   *list = elem;
   return (0);
 }
@@ -56,9 +49,6 @@ int		plan_to_list(char *str, int *compt_str, t_list **list)
   coor_to_elem(str, compt_str, elem, 'c');
   color_to_elem(str, compt_str, elem);
   elem->next = *list;
-  elem->prev = NULL;
-  if (*list != NULL)
-    (*list)->prev = elem;
   *list = elem;
   return (0);
 }
@@ -84,9 +74,6 @@ int		form_to_list(char *str, int *compt_str, t_list **list)
   coor_to_elem(str, compt_str, elem, 'c');
   color_to_elem(str, compt_str, elem);
   elem->next = *list;
-  elem->prev = NULL;
-  if (*list != NULL)
-    (*list)->prev = elem;
   *list = elem;
   return (0);
 }

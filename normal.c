@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Thu Feb  5 17:48:02 2015 Antoine Zanardi
-** Last update Fri Feb  6 14:48:20 2015 Antoine Zanardi
+** Last update Fri Feb  6 18:36:43 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -53,10 +53,13 @@ t_vec		normal_plan(t_kist *k)
 
 t_vec		check_normal(t_kist *k, t_vec pt)
 {
+  t_vec		null;
+
   if (my_strcmp("SPHERE", k->obj->forme, 0) == 0)
     return (normal_sphere(pt, k));
   else if (my_strcmp("PLAN", k->obj->forme, 0) == 0)
     return (normal_plan(k));
   else if (my_strcmp("CYLINDRE", k->obj->forme, 0) == 0)
     return (normal_cy(pt, k));
+  return (null);
 }
