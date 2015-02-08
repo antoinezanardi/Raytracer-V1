@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Thu Feb  5 17:48:02 2015 Antoine Zanardi
-** Last update Fri Feb  6 18:36:43 2015 Antoine Zanardi
+** Last update Sun Feb  8 16:21:58 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -35,6 +35,20 @@ t_vec		normal_sphere(t_vec pt, t_kist *k)
   return (normale);
 }
 
+t_vec		normal_cone(t_vec pt, t_kist *k)
+{
+  t_vec		normale;
+
+  rotation_x(&normale.y, &normale.z, D_R(k->obj->x_r));
+  rotation_y(&normale.x, &normale.z, D_R(k->obj->y_r));
+  rotation_z(&normale.x, &normale.y, D_R(k->obj->z_r));
+  normale.x = pt.x - (double)k->obj->x;
+  normale.y = pt.y - (double)k->obj->y;
+  normale.z = pt.z - (double)k->obj->z;
+  normale.z = normale.z * -0.5;
+  return (normale);
+}
+
 t_vec		normal_plan(t_kist *k)
 {
   t_vec		normale;
@@ -61,5 +75,7 @@ t_vec		check_normal(t_kist *k, t_vec pt)
     return (normal_plan(k));
   else if (my_strcmp("CYLINDRE", k->obj->forme, 0) == 0)
     return (normal_cy(pt, k));
+  else if (my_strcmp("CONE", k->obj->forme, 0) == 0)
+    return (normal_cone(pt, k));
   return (null);
 }

@@ -5,7 +5,7 @@
 ## Login   <zanard_a@epitech.net>
 ##
 ## Started on  Tue Oct 21 16:47:57 2014 Antoine Zanardi
-## Last update Fri Feb  6 16:03:34 2015 Antoine Zanardi
+## Last update Sat Feb  7 17:40:03 2015 Antoine Zanardi
 ##
 
 DEBUG	=	no
@@ -32,7 +32,10 @@ SRCS	=	main.c \
 		picture.c \
 		light.c \
 		normal.c \
-		view.c
+		view.c \
+		get_double.c \
+		color.c \
+		shadow.c \
 
 SRCS_LI	=	$(LIB_PA)my_getnbr.c \
 		$(LIB_PA)my_putchar.c \

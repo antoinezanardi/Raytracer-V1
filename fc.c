@@ -5,16 +5,46 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 16:15:03 2015 Antoine Zanardi
-** Last update Fri Feb  6 17:27:06 2015 Antoine Zanardi
+** Last update Sun Feb  8 16:32:38 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
+#include	"my.h"
+#include	"rtv1.h"
 
 void		pass_spaces(char *str, int *compt_str)
 {
   while ((str[*compt_str] == ' ' || str[*compt_str] == '\t') &&
 	 str[*compt_str] != '\0')
     *compt_str = *compt_str + 1;
+}
+
+void		str_is_low_nb(char *str, int *compt_str)
+{
+  if (str[*compt_str] == '1' && str[*compt_str + 1] != ',')
+    my_putstr_error(5, *compt_str);
+  if (str[*compt_str] == '1')
+    *compt_str = *compt_str + 2;
+  else if (str[*compt_str] != '0')
+    my_putstr_error(5, *compt_str);
+  else if (str[*compt_str] == '0' && str[*compt_str + 1] == ',')
+    *compt_str = *compt_str + 2;
+  else
+    {
+      if (str[*compt_str + 1] != '.')
+	my_putstr_error(5, *compt_str);
+      if (!(str[*compt_str + 2] >= '0' && str[*compt_str + 2] <= '9'))
+	my_putstr_error(5, *compt_str);
+      *compt_str = *compt_str + 2;
+      while (str[*compt_str] != ',' && str[*compt_str] != '\0')
+	if (str[*compt_str] >= '0' && str[*compt_str] <= '9')
+	  *compt_str = *compt_str + 1;
+	else
+	  my_putstr_error(5, *compt_str);
+    }
+  if (str[*compt_str] == ',')
+    *compt_str = *compt_str + 1;
+  pass_spaces(str, compt_str);
 }
 
 int		my_strcmp(char *str, char *str2, int compt2)

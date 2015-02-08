@@ -5,20 +5,23 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 09:33:50 2015 Antoine Zanardi
-** Last update Fri Feb  6 18:11:19 2015 Antoine Zanardi
+** Last update Sun Feb  8 17:21:15 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
 #include	"rtv1.h"
 #include	"my.h"
 
-t_vec		treat_vec(int x, int y)
+t_vec		treat_vec(int x, int y, t_list oeil)
 {
   t_vec		vec;
 
-  vec.x = LARG / 2.0;
+  vec.x = (double)LARG / 2.0;
   vec.y = (double)LARG / 2.0 - (double)x;
   vec.z = (double)HAUT / 2.0 - (double)y;
+  rotation_x(&(vec.y), &(vec.z), D_R(oeil.x_r));
+  rotation_y(&(vec.x), &(vec.z), D_R(oeil.y_r));
+  rotation_z(&(vec.x), &(vec.y), D_R(oeil.z_r));
   return (vec);
 }
 
@@ -31,10 +34,7 @@ unsigned int	calc_pix(t_fen fen, t_list **obj, t_kist **k_list, t_list oeil)
 
   convert_view(oeil, &view);
   tmp = *obj;
-  vec = treat_vec(fen.x, fen.y);
-  rotation_x(&(vec.y), &(vec.z), D_R(oeil.x_r));
-  rotation_y(&(vec.x), &(vec.z), D_R(oeil.y_r));
-  rotation_z(&(vec.x), &(vec.y), D_R(oeil.z_r));
+  vec = treat_vec(fen.x, fen.y, oeil);
   while (tmp != NULL)
     {
       if (my_strcmp("SPHERE", tmp->forme, 0) == 0)
@@ -43,12 +43,13 @@ unsigned int	calc_pix(t_fen fen, t_list **obj, t_kist **k_list, t_list oeil)
 	treat_plan(vec, k_list, tmp, view);
       else if (my_strcmp("CYLINDRE", tmp->forme, 0) == 0)
 	treat_cy(vec, k_list, tmp, view);
+      else if (my_strcmp("CONE", tmp->forme, 0) == 0)
+	treat_cone(vec, k_list, tmp, view);
       tmp = tmp->next;
     }
   if (*k_list != NULL)
     return (find_low_k(k_list, &k, vec, view));
-  else
-    return (0);
+  return (0);
 }
 
 void		treat(t_windows *win, t_list **obj)

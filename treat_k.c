@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 13:38:57 2015 Antoine Zanardi
-** Last update Fri Feb  6 15:05:30 2015 Antoine Zanardi
+** Last update Sun Feb  8 16:12:47 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -54,7 +54,7 @@ unsigned int	find_low_k(t_kist **list, t_kist *k_low, t_vec vec, t_vec view)
 	}
       tmp = tmp->next;
     }
-  return (light_my_color(k_low, vec, view));
+  return (light_my_color(k_low, vec, view, list));
 }
 
 int		add_klist(t_kist **list, double k, t_list *obj)

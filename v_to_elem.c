@@ -5,11 +5,20 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Tue Feb  3 17:08:23 2015 Antoine Zanardi
-** Last update Thu Feb  5 09:54:53 2015 Antoine Zanardi
+** Last update Sun Feb  8 15:40:09 2015 Antoine Zanardi
 */
 
 #include	"my.h"
 #include	"rtv1.h"
+
+void		double_to_elem(char *str, int *compt_str, t_list *elem)
+{
+  pass_spaces(str, compt_str);
+  elem->bri = my_get_double(str, *compt_str);
+  while (str[*compt_str] != ',')
+    (*compt_str)++;
+  (*compt_str)++;
+}
 
 void		coor_to_elem(char *str, int *compt_str, t_list *elem, char mde)
 {
@@ -47,10 +56,6 @@ void		color_to_elem(char *str, int *compt_str, t_list *elem)
     elem->color = "BLUE";
   else if (my_strcmp("YELLOW", str, *compt_str) == 0)
     elem->color = "YELLOW";
-  else if (my_strcmp("PURPLE", str, *compt_str) == 0)
-    elem->color = "PURPLE";
-  else if (my_strcmp("GREY", str, *compt_str) == 0)
-    elem->color = "GREY";
   while (str[*compt_str] >= 'A' && str[*compt_str] <= 'Z')
     *compt_str = *compt_str + 1;
   pass_spaces(str, compt_str);

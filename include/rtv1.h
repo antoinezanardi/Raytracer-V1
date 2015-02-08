@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 11:03:03 2015 Antoine Zanardi
-** Last update Fri Feb  6 18:35:55 2015 Antoine Zanardi
+** Last update Sun Feb  8 17:28:56 2015 Antoine Zanardi
 */
 
 #ifndef		RTV1_H_
@@ -39,6 +39,7 @@ typedef	struct	s_list
   double	x_r;
   double	y_r;
   double	z_r;
+  double	bri;
   char		*forme;
   char		*color;
   struct s_list	*next;
@@ -46,7 +47,7 @@ typedef	struct	s_list
 
 typedef	struct	s_kist
 {
-  double	k;
+  long double	k;
   unsigned char	red;
   unsigned char	green;
   unsigned char	blue;
@@ -54,6 +55,13 @@ typedef	struct	s_kist
   struct s_kist *next;
   struct s_kist	*prev;
 }		t_kist;
+
+typedef	struct	s_color
+{
+  unsigned char	red;
+  unsigned char	green;
+  unsigned char	blue;
+}		t_color;
 
 typedef	struct	s_vec
 {
@@ -69,6 +77,16 @@ typedef	struct	s_eq
   double	c;
 }		t_eq;
 
+typedef	struct	s_light
+{
+  double	x;
+  double	y;
+  double	z;
+  double	b_r;
+  double	b_g;
+  double	b_b;
+}		t_light;
+
 typedef	struct	s_fen
 {
   int		x;
@@ -76,9 +94,12 @@ typedef	struct	s_fen
 }		t_fen;
 
 char		*pick_nb(char *, int *);
+double		my_get_double(char *, int);
 unsigned int	get_my_color(unsigned char, unsigned char, unsigned char);
 unsigned int	find_low_k(t_kist **, t_kist *, t_vec, t_vec);
 unsigned int	calc_pix(t_fen, t_list **, t_kist **, t_list);
+unsigned int	light_my_color(t_kist *, t_vec, t_vec, t_kist **);
+unsigned int	treat_the_color(t_kist *, double, t_light *);
 int		my_expose(t_windows *);
 int		my_strcmp(char *, char *, int);
 int		add_top_list(t_list **, int);
@@ -87,7 +108,7 @@ int		form_to_list(char *, int *, t_list **);
 int		correct_form(char *, int);
 int		put_pix_picture(t_windows *, int, int, int);
 int		add_klist(t_kist **, double, t_list *);
-t_list		make_my_view(t_list **);
+int		shadow_on(t_vec *, t_kist **, t_light *);
 void		my_notice(void);
 void		my_exemple(void);
 void		rotation_x(double *, double *, double);
@@ -97,7 +118,9 @@ void		treat(t_windows *, t_list **);
 void		param_to_list(char *, t_list **);
 void		coor_to_elem(char *, int *, t_list *, char);
 void		color_to_elem(char *, int *, t_list *);
+void		double_to_elem(char *, int *, t_list *);
 void		my_show_list(t_list *);
+void		str_is_low_nb(char *, int *);
 void		str_is_num(char *, int *);
 void		str_is_color(char *, int *);
 void		correct_shape(char *, int *);
@@ -109,11 +132,12 @@ void		my_putstr_error(int, int);
 void		treat_plan(t_vec, t_kist **, t_list *, t_vec);
 void		treat_ball(t_vec, t_kist **, t_list *, t_vec);
 void		treat_cy(t_vec, t_kist **, t_list *, t_vec);
+void		treat_cone(t_vec, t_kist **, t_list *, t_vec);
 void		movement(t_vec *, t_list *, t_vec *);
 void		check_the_view(t_list **);
 void		convert_view(t_list, t_vec *);
-unsigned int	light_my_color(t_kist *, t_vec, t_vec);
+t_list		make_my_view(t_list **);
 t_vec		check_normal(t_kist *, t_vec);
-t_vec		treat_vec(int, int);
+t_vec		treat_vec(int, int, t_list);
 
 #endif		/* !RTV1_H_ */

@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 14:02:41 2015 Antoine Zanardi
-** Last update Fri Feb  6 18:34:48 2015 Antoine Zanardi
+** Last update Sun Feb  8 16:27:26 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -22,13 +22,12 @@ void		my_exemple(void)
 void		my_notice(void)
 {
   my_putstr("\n                     ~ HOW TO USE ~\n");
-  my_putstr("\nFORME : X | Y | Z | RAY | X_R | Y_R | Z_R | COLOR\n");
+  my_putstr("\nFORME : X | Y | Z | RAY | X_R | Y_R | Z_R | BRI | COLOR\n");
   my_putstr("FORME : You can choose between : SPHERE / PLAN\n");
   my_putstr("X / Y / Z : Position of the form\n");
   my_putstr("RAY : ONLY for sphere, cylindre, cone\n");
   my_putstr("X_R / Y_R / Z_R : Rotate in those coordinates\n");
-  //  my_putstr("BRI : Coeff between 0 & 1 of how bright the object is\n");
-  // my_putstr("HT : Hauteur : ONLY for the cylindre and cone\n");
+  my_putstr("BRI : Coeff between 0 & 1 of how bright the object is\n");
   my_putstr("COLOR : Choose : BLACK / WHITE / BLUE / RED / GREEN / YELLOW\n\n");
   my_putstr("VIEW :  X | Y | Z | X_R | Y_R | Z_R \n");
   my_putstr("X / Y / Z : Position of the point of view\n");

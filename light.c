@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Thu Feb  5 17:15:24 2015 Antoine Zanardi
-** Last update Fri Feb  6 15:27:40 2015 Antoine Zanardi
+** Last update Sun Feb  8 17:42:35 2015 Antoine Zanardi
 */
 
 #include	<math.h>
@@ -22,28 +22,48 @@ void		normalize(t_vec *vec)
   vec->z /= norme;
 }
 
-unsigned int	light_my_color(t_kist *k, t_vec vec, t_vec view)
+void		calc_pt_inter(t_vec *pt, t_vec *view, t_kist *k, t_vec *vec)
+{
+  pt->x = view->x + k->k * vec->x;
+  pt->y = view->y + k->k * vec->y;
+  pt->z = view->z + k->k * vec->z;
+}
+
+void		calc_vec_dir(t_light *light, t_vec *pt, t_vec *vec_dir)
+{
+  vec_dir->x = light->x - pt->x;
+  vec_dir->y = light->y - pt->y;
+  vec_dir->z = light->z - pt->z;
+}
+
+void		init_the_light(t_light *light)
+{
+  light->x = 0.0;
+  light->y = 0.0;
+  light->z = 100.0;
+  light->b_r = 255.0;
+  light->b_g = 255.0;
+  light->b_b = 255.0;
+}
+
+unsigned int	light_my_color(t_kist *k, t_vec vec, t_vec view, t_kist **list)
 {
   double	cos;
   t_vec		pt;
-  t_vec		light;
   t_vec		vec_dir;
   t_vec		normale;
+  t_light	light;
 
-  light.x = -200.0;
-  light.y = 0.0;
-  light.z = 100.0;
-  pt.x = view.x + k->k * vec.x;
-  pt.y = view.y + k->k * vec.y;
-  pt.z = view.z + k->k * vec.z;
-  vec_dir.x = light.x - pt.x;
-  vec_dir.y = light.y - pt.y;
-  vec_dir.z = light.z - pt.z;
+  init_the_light(&light);
+  calc_pt_inter(&pt, &view, k, &vec);
+  calc_vec_dir(&light, &pt, &vec_dir);
+  //  if (shadow_on(&vec_dir, list, &light) == 1)
+  //   return (get_my_color(0, 0, 0));
   normale = check_normal(k, pt);
   normalize(&normale);
   normalize(&vec_dir);
   cos = (normale.x * vec_dir.x + normale.y * vec_dir.y + normale.z * vec_dir.z);
   if (cos > 0.00001)
-    return (get_my_color(k->red * cos, k->green * cos, k->blue * cos));
+    return (treat_the_color(k, cos, &light));
   return (get_my_color(0, 0, 0));
 }

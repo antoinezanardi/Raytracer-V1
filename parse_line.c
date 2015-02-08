@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 17:08:36 2015 Antoine Zanardi
-** Last update Fri Feb  6 18:33:51 2015 Antoine Zanardi
+** Last update Sat Feb  7 10:37:24 2015 Antoine Zanardi
 */
 
 #include	"rtv1.h"
@@ -60,6 +60,7 @@ void		correct_plan(char *str, int *compt_str)
       compt_shape++;
     }
   pass_spaces(str, compt_str);
+  str_is_low_nb(str, compt_str);
   str_is_color(str, compt_str);
   if (str[*compt_str] == '\n')
     *compt_str = *compt_str + 1;
@@ -113,6 +114,7 @@ void		correct_shape(char *str, int *compt_str)
       compt_shape++;
     }
   pass_spaces(str, compt_str);
+  str_is_low_nb(str, compt_str);
   str_is_color(str, compt_str);
   if (str[*compt_str] == '\n')
     *compt_str = *compt_str + 1;

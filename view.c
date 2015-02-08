@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Fri Feb  6 15:56:00 2015 Antoine Zanardi
-** Last update Fri Feb  6 18:21:23 2015 Antoine Zanardi
+** Last update Sun Feb  8 16:35:29 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -50,5 +50,5 @@ t_list		make_my_view(t_list **obj)
 	return (*tmp);
       tmp = tmp->next;
     }
-  return(null);
+  return (null);
 }

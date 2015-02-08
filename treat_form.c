@@ -5,12 +5,38 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 10:01:49 2015 Antoine Zanardi
-** Last update Fri Feb  6 14:15:50 2015 Antoine Zanardi
+** Last update Sun Feb  8 15:54:35 2015 Antoine Zanardi
 */
 
 #include	<math.h>
 #include	"rtv1.h"
 #include	"my.h"
+
+void		treat_cone(t_vec vec, t_kist **kist, t_list *cone, t_vec view)
+{
+  t_eq		eq;
+  double	k;
+  double	k2;
+  double	delta;
+
+  movement(&view, cone, &vec);
+  eq.a = pow(vec.x, 2) + pow(vec.y, 2) -
+    pow(vec.z, 2) / (pow(tan(cone->ray), 2.0));
+  eq.b = 2.0 * ((view.x * vec.x) + (view.y * vec.y) - (view.z * vec.z) /
+		(pow(tan(cone->ray), 2.0)));
+  eq.c = pow(view.x, 2.0) + pow(view.y, 2.0) - pow(view.z, 2.0) /
+    pow(tan(cone->ray), 2.0);
+  delta = pow(eq.b, 2.0) - (4.0 * eq.a * eq.c);
+  if (delta > 0)
+    {
+      k = (-eq.b - sqrt(delta)) / (2.0 * eq.a);
+      k2 = (-eq.b + sqrt(delta)) / (2.0 * eq.a);
+      if (k <= k2 && k >= 0.0001)
+	add_klist(kist, k, cone);
+      else if (k2 >= 0.0001)
+	add_klist(kist, k2, cone);
+    }
+}
 
 void		treat_cy(t_vec vec, t_kist **kist, t_list *cy, t_vec view)
 {
