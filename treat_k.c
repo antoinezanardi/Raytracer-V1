@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 13:38:57 2015 Antoine Zanardi
-** Last update Sun Feb  8 16:12:47 2015 Antoine Zanardi
+** Last update Tue Feb 10 11:52:45 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -36,25 +36,26 @@ void		convert_my_color(t_kist *elem, char *color)
     }
 }
 
-unsigned int	find_low_k(t_kist **list, t_kist *k_low, t_vec vec, t_vec view)
+t_kist		find_low_k(t_kist **list)
 {
   t_kist	*tmp;
+  t_kist	k_low;
   int		bool;
 
   tmp = *list;
   bool = 0;
   while (tmp != NULL)
     {
-      if (bool == 1 && tmp->k < k_low->k)
-	k_low = tmp;
+      if (bool == 1 && tmp->k < k_low.k)
+	k_low = *tmp;
       else if (tmp->k > 0.000001 && bool == 0)
 	{
-	  k_low = tmp;
+	  k_low = *tmp;
 	  bool = 1;
 	}
       tmp = tmp->next;
     }
-  return (light_my_color(k_low, vec, view, list));
+  return (k_low);
 }
 
 int		add_klist(t_kist **list, double k, t_list *obj)

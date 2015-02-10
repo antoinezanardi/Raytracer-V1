@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 11:03:03 2015 Antoine Zanardi
-** Last update Sun Feb  8 17:28:56 2015 Antoine Zanardi
+** Last update Tue Feb 10 11:53:11 2015 Antoine Zanardi
 */
 
 #ifndef		RTV1_H_
@@ -96,9 +96,8 @@ typedef	struct	s_fen
 char		*pick_nb(char *, int *);
 double		my_get_double(char *, int);
 unsigned int	get_my_color(unsigned char, unsigned char, unsigned char);
-unsigned int	find_low_k(t_kist **, t_kist *, t_vec, t_vec);
 unsigned int	calc_pix(t_fen, t_list **, t_kist **, t_list);
-unsigned int	light_my_color(t_kist *, t_vec, t_vec, t_kist **);
+unsigned int	light_my_color(t_kist *, t_vec, t_vec, t_list **);
 unsigned int	treat_the_color(t_kist *, double, t_light *);
 int		my_expose(t_windows *);
 int		my_strcmp(char *, char *, int);
@@ -108,7 +107,7 @@ int		form_to_list(char *, int *, t_list **);
 int		correct_form(char *, int);
 int		put_pix_picture(t_windows *, int, int, int);
 int		add_klist(t_kist **, double, t_list *);
-int		shadow_on(t_vec *, t_kist **, t_light *);
+int		shadow_on(t_vec *, t_list **, t_vec *, t_kist *);
 void		my_notice(void);
 void		my_exemple(void);
 void		rotation_x(double *, double *, double);
@@ -139,5 +138,6 @@ void		convert_view(t_list, t_vec *);
 t_list		make_my_view(t_list **);
 t_vec		check_normal(t_kist *, t_vec);
 t_vec		treat_vec(int, int, t_list);
+t_kist		find_low_k(t_kist **);
 
 #endif		/* !RTV1_H_ */

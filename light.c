@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Thu Feb  5 17:15:24 2015 Antoine Zanardi
-** Last update Sun Feb  8 17:42:35 2015 Antoine Zanardi
+** Last update Tue Feb 10 11:12:28 2015 Antoine Zanardi
 */
 
 #include	<math.h>
@@ -38,7 +38,7 @@ void		calc_vec_dir(t_light *light, t_vec *pt, t_vec *vec_dir)
 
 void		init_the_light(t_light *light)
 {
-  light->x = 0.0;
+  light->x = 40.0;
   light->y = 0.0;
   light->z = 100.0;
   light->b_r = 255.0;
@@ -46,7 +46,7 @@ void		init_the_light(t_light *light)
   light->b_b = 255.0;
 }
 
-unsigned int	light_my_color(t_kist *k, t_vec vec, t_vec view, t_kist **list)
+unsigned int	light_my_color(t_kist *k, t_vec vec, t_vec view, t_list **list)
 {
   double	cos;
   t_vec		pt;
@@ -57,8 +57,8 @@ unsigned int	light_my_color(t_kist *k, t_vec vec, t_vec view, t_kist **list)
   init_the_light(&light);
   calc_pt_inter(&pt, &view, k, &vec);
   calc_vec_dir(&light, &pt, &vec_dir);
-  //  if (shadow_on(&vec_dir, list, &light) == 1)
-  //   return (get_my_color(0, 0, 0));
+  if (shadow_on(&vec_dir, list, &pt, k) == 1)
+    return (get_my_color(0, 0, 0));
   normale = check_normal(k, pt);
   normalize(&normale);
   normalize(&vec_dir);

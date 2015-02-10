@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Sat Feb  7 17:26:01 2015 Antoine Zanardi
-** Last update Sat Feb  7 19:54:31 2015 Antoine Zanardi
+** Last update Tue Feb 10 11:16:34 2015 Antoine Zanardi
 */
 
 #include	<math.h>
@@ -40,7 +40,6 @@ void		k_sphere(t_vec vec, t_kist **kist, t_list *ball, t_vec view)
   eq.c = pow(view.x, 2.0) + pow(view.y, 2.0) + pow(view.z, 2.0) -
     pow((double)ball->ray, 2.0);
   delta = pow(eq.b, 2.0) - 4.0 * eq.a * eq.c;
-  //  printf("x = %f\n y = %f\n z = %f\n", vec.x, vec.y, vec.z);
   if (delta > 0)
     {
       k = (-eq.b - sqrt(delta)) / (2.0 * eq.a);
@@ -65,29 +64,26 @@ void		k_plan(t_vec vec, t_kist **kist, t_list *plan, t_vec view)
     }
 }
 
-int		shadow_on(t_vec *dir, t_kist **list, t_light *light)
+int		shadow_on(t_vec *dir, t_list **list, t_vec *pt, t_kist *k)
 {
-  t_vec		view;
-  t_kist	*tmp;
+  t_list	*tmp;
   t_kist	*k_list;
 
-  view.x = light->x;
-  view.y = light->y;
-  view.z = light->z;
   tmp = *list;
   k_list = NULL;
   while (tmp != NULL)
     {
-      if (my_strcmp("SPHERE", tmp->obj->forme, 0) == 0)
+      if (tmp != k->obj)
 	{
-	  k_sphere(*dir, &k_list, tmp->obj, view);
+	  if (my_strcmp("PLAN", tmp->forme, 0) == 0)
+	    treat_plan(*dir, &k_list, tmp, *pt);
+	  else if (my_strcmp("SPHERE", tmp->forme, 0) == 0)
+	    treat_ball(*dir, &k_list, tmp, *pt);
+	  else if (my_strcmp("CYLINDRE", tmp->forme, 0) == 0)
+	    treat_cy(*dir, &k_list, tmp, *pt);
+	  else if (my_strcmp("CONE", tmp->forme, 0) == 0)
+	    treat_cone(*dir, &k_list, tmp, *pt);
 	}
-      else if (my_strcmp("PLAN", tmp->obj->forme, 0) == 0)
-	{
-	  k_plan(*dir, &k_list, tmp->obj, view);
-	}
-      else if (my_strcmp("CYLINDRE", tmp->obj->forme, 0) == 0)
-	return (0);
       tmp = tmp->next;
     }
   return (find_a_k(&k_list));

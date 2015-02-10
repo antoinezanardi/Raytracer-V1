@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 09:33:50 2015 Antoine Zanardi
-** Last update Sun Feb  8 17:21:15 2015 Antoine Zanardi
+** Last update Tue Feb 10 11:55:00 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -38,7 +38,7 @@ unsigned int	calc_pix(t_fen fen, t_list **obj, t_kist **k_list, t_list oeil)
   while (tmp != NULL)
     {
       if (my_strcmp("SPHERE", tmp->forme, 0) == 0)
-      	treat_ball(vec, k_list, tmp, view);
+	treat_ball(vec, k_list, tmp, view);
       else if (my_strcmp("PLAN", tmp->forme, 0) == 0)
 	treat_plan(vec, k_list, tmp, view);
       else if (my_strcmp("CYLINDRE", tmp->forme, 0) == 0)
@@ -47,9 +47,10 @@ unsigned int	calc_pix(t_fen fen, t_list **obj, t_kist **k_list, t_list oeil)
 	treat_cone(vec, k_list, tmp, view);
       tmp = tmp->next;
     }
-  if (*k_list != NULL)
-    return (find_low_k(k_list, &k, vec, view));
-  return (0);
+  if (*k_list == NULL)
+      return (0);
+  k = find_low_k(k_list);
+  return (light_my_color(&k, vec, view, obj));
 }
 
 void		treat(t_windows *win, t_list **obj)
