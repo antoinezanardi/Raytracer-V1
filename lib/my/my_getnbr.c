@@ -5,14 +5,16 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Thu Oct  2 17:08:14 2014 Antoine Zanardi
-** Last update Tue Oct 21 22:38:01 2014 Antoine Zanardi
+** Last update Thu Mar  5 16:24:58 2015 Antoine Zanardi
 */
 
-int	my_getnbr(char *str)
+#include	"my.h"
+
+int		my_getnbr(char *str)
 {
-  int	i;
-  int	nbr;
-  int	b;
+  int		i;
+  int		nbr;
+  int		b;
 
   i = 0;
   b = 1;

@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 15:26:20 2015 Antoine Zanardi
-** Last update Fri Feb  6 17:58:50 2015 Antoine Zanardi
+** Last update Thu Mar  5 17:14:15 2015 Antoine Zanardi
 */
 
 #include	<sys/types.h>
@@ -50,7 +50,7 @@ void		correct_file(char *str)
 void		parsing(char *file, t_list **list)
 {
   int		fd;
-  int		ret;
+  long		ret;
   static char	buffer[BUFFER_SIZE];
 
   if ((fd = open(file, O_RDONLY)) == -1)

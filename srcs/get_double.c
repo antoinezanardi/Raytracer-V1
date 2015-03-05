@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Sat Feb  7 10:51:19 2015 Antoine Zanardi
-** Last update Sat Feb  7 15:11:41 2015 Antoine Zanardi
+** Last update Thu Mar  5 16:51:50 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -13,9 +13,9 @@
 #include	"my.h"
 #include	"rtv1.h"
 
-int		count_decimal(char *str, int compt_str)
+int	count_decimal(char *str, int compt_str)
 {
-  int		compt_dec;
+  int	compt_dec;
 
   compt_dec = 0;
   while (str[compt_str] != '.')
@@ -39,8 +39,8 @@ char		*pick_decimal(char *str, int compt_str)
   while (str[compt_str] != '.')
     compt_str++;
   compt_str++;
-  if ((dec = malloc(sizeof(char) * count_decimal(str, compt_save) + 1)) == NULL)
-      return (NULL);
+  if ((dec = malloc(sizeof(char) * (unsigned long)count_decimal(str, compt_save) + 1)) == NULL)
+    my_putstr_error(10, 0);
   compt_dec = 0;
   while (str[compt_str] != ',')
     {

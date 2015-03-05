@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 10:54:17 2015 Antoine Zanardi
-** Last update Fri Feb  6 18:35:15 2015 Antoine Zanardi
+** Last update Tue Feb 10 13:13:27 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -60,5 +60,6 @@ int		main(int argc, char **argv)
   mlx_put_image_to_window(win.mlx_ptr, win.win_ptr, win.img_ptr, 0, 0);
   mlx_expose_hook(win.win_ptr, &my_expose, &win);
   mlx_loop(win.mlx_ptr);
+  free(list);
   return (0);
 }

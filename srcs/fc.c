@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 16:15:03 2015 Antoine Zanardi
-** Last update Sun Feb  8 16:32:38 2015 Antoine Zanardi
+** Last update Thu Mar  5 17:13:22 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -82,7 +82,7 @@ char		*pick_nb(char *str, int *compt_str)
       compt_len++;
     }
   *compt_str = *compt_str - compt_len;
-  if ((dest = malloc(sizeof(char) * compt_len + 1)) == NULL)
+  if ((dest = malloc(sizeof(char) * (unsigned int)compt_len + 1)) == NULL)
     return (NULL);
   compt_len = 0;
   while (str[*compt_str] != ',')

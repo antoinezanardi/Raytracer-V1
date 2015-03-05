@@ -5,10 +5,11 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Tue Oct  7 12:41:55 2014 Antoine Zanardi
-** Last update Wed Dec 17 11:38:23 2014 Antoine Zanardi
+** Last update Thu Mar  5 17:22:15 2015 Antoine Zanardi
 */
 
 #include	<unistd.h>
+#include	"my.h"
 
 void	my_putchar(char c)
 {

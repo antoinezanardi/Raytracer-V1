@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 09:33:50 2015 Antoine Zanardi
-** Last update Tue Feb 10 11:55:00 2015 Antoine Zanardi
+** Last update Thu Mar  5 17:11:48 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -68,9 +68,10 @@ void		treat(t_windows *win, t_list **obj)
       while (fen.x < LARG)
 	{
 	  k_list = NULL;
-	  color = calc_pix(fen, obj, &k_list, view);
+	  color = (int)calc_pix(fen, obj, &k_list, view);
 	  put_pix_picture(win, fen.x, fen.y, color);
 	  fen.x++;
+	  free(k_list);
 	}
       my_expose(win);
       fen.y++;

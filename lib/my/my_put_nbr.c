@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Oct  1 17:16:33 2014 Antoine Zanardi
-** Last update Wed Dec 17 11:18:32 2014 Antoine Zanardi
+** Last update Thu Mar  5 17:21:57 2015 Antoine Zanardi
 */
 
 #include	"my.h"
@@ -23,5 +23,5 @@ void	my_put_nbr(int nb)
       my_put_nbr(nb * -1);
     }
   else if (nb >= 0 && nb <= 9)
-    my_putchar(nb + 48);
+    my_putchar((char)nb + 48);
 }

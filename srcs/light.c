@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Thu Feb  5 17:15:24 2015 Antoine Zanardi
-** Last update Tue Feb 10 11:12:28 2015 Antoine Zanardi
+** Last update Thu Mar  5 16:54:45 2015 Antoine Zanardi
 */
 
 #include	<math.h>
@@ -24,9 +24,9 @@ void		normalize(t_vec *vec)
 
 void		calc_pt_inter(t_vec *pt, t_vec *view, t_kist *k, t_vec *vec)
 {
-  pt->x = view->x + k->k * vec->x;
-  pt->y = view->y + k->k * vec->y;
-  pt->z = view->z + k->k * vec->z;
+  pt->x = view->x + (double)k->k * vec->x;
+  pt->y = view->y + (double)k->k * vec->y;
+  pt->z = view->z + (double)k->k * vec->z;
 }
 
 void		calc_vec_dir(t_light *light, t_vec *pt, t_vec *vec_dir)

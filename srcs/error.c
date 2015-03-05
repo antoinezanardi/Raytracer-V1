@@ -5,13 +5,14 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 14:02:41 2015 Antoine Zanardi
-** Last update Sun Feb  8 16:27:26 2015 Antoine Zanardi
+** Last update Thu Mar  5 17:17:57 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
+#include	"rtv1.h"
 #include	"my.h"
 
-void		my_exemple(void)
+int		my_exemple(void)
 {
   my_putstr("VIEW -800, 0, 40, 0, 0, 0,\n");
   my_putstr("PLAN 0, 0, -100, 0, 0, 0, BLUE\n");
@@ -19,7 +20,7 @@ void		my_exemple(void)
   exit(0);
 }
 
-void		my_notice(void)
+int		my_notice(void)
 {
   my_putstr("\n                     ~ HOW TO USE ~\n");
   my_putstr("\nFORME : X | Y | Z | RAY | X_R | Y_R | Z_R | BRI | COLOR\n");
@@ -35,7 +36,7 @@ void		my_notice(void)
   exit(0);
 }
 
-void		my_putstr_error2(int error, int nb)
+int		my_putstr_error2(int error, int nb)
 {
   if (error == 7)
     {
@@ -47,6 +48,8 @@ void		my_putstr_error2(int error, int nb)
     my_putstr("A point of view has to be set\n");
   else if (error == 9)
     my_putstr("Multiple points of view can't be set\n");
+  else if (error == 10)
+    my_putstr("Malloc failed, end of program\n");
   exit(1);
 }
 

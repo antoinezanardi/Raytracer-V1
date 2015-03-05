@@ -5,12 +5,14 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Thu Oct  2 12:42:56 2014 Antoine Zanardi
-** Last update Sat Oct 11 17:57:41 2014 Antoine Zanardi
+** Last update Thu Mar  5 17:20:58 2015 Antoine Zanardi
 */
 
-int	my_strlen(char *str)
+#include	"my.h"
+
+int		my_strlen(char *str)
 {
-  int	o;
+  int		o;
 
   o = 0;
   while (str[o] != '\0')

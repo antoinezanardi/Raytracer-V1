@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 13:38:57 2015 Antoine Zanardi
-** Last update Tue Feb 10 11:52:45 2015 Antoine Zanardi
+** Last update Tue Feb 10 13:16:45 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -55,6 +55,7 @@ t_kist		find_low_k(t_kist **list)
 	}
       tmp = tmp->next;
     }
+  free(tmp);
   return (k_low);
 }
 

@@ -5,14 +5,14 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 11:03:03 2015 Antoine Zanardi
-** Last update Tue Feb 10 11:53:11 2015 Antoine Zanardi
+** Last update Thu Mar  5 17:19:59 2015 Antoine Zanardi
 */
 
 #ifndef		RTV1_H_
 # define	RTV1_H_
 
-# define	HAUT		600
-# define	LARG		800
+# define	HAUT		720
+# define	LARG		1280
 # define	BUFFER_SIZE	4096
 # define	D_R(nb)		((3.14 * (double)nb) / 180.0)
 # define	XB		(view.x - ball->x)
@@ -93,23 +93,6 @@ typedef	struct	s_fen
   int		y;
 }		t_fen;
 
-char		*pick_nb(char *, int *);
-double		my_get_double(char *, int);
-unsigned int	get_my_color(unsigned char, unsigned char, unsigned char);
-unsigned int	calc_pix(t_fen, t_list **, t_kist **, t_list);
-unsigned int	light_my_color(t_kist *, t_vec, t_vec, t_list **);
-unsigned int	treat_the_color(t_kist *, double, t_light *);
-int		my_expose(t_windows *);
-int		my_strcmp(char *, char *, int);
-int		add_top_list(t_list **, int);
-int		add_bot_list(t_list **, int);
-int		form_to_list(char *, int *, t_list **);
-int		correct_form(char *, int);
-int		put_pix_picture(t_windows *, int, int, int);
-int		add_klist(t_kist **, double, t_list *);
-int		shadow_on(t_vec *, t_list **, t_vec *, t_kist *);
-void		my_notice(void);
-void		my_exemple(void);
 void		rotation_x(double *, double *, double);
 void		rotation_y(double *, double *, double);
 void		rotation_z(double *, double *, double);
@@ -135,9 +118,47 @@ void		treat_cone(t_vec, t_kist **, t_list *, t_vec);
 void		movement(t_vec *, t_list *, t_vec *);
 void		check_the_view(t_list **);
 void		convert_view(t_list, t_vec *);
+void		normalize(t_vec *);
+void		calc_pt_inter(t_vec *, t_vec *, t_kist *, t_vec *);
+void		calc_vec_dir(t_light *, t_vec *, t_vec *);
+void		init_the_light(t_light *);
+void		translation(t_vec *, t_list *);
+void		convert_my_color(t_kist *, char *);
+void		correct_file(char *);
+void		init_list(t_list **, int, char **);
+void		init_my_mlx(t_windows *);
+char		*pick_nb(char *, int *);
+char		*pick_decimal(char *, int);
+int		my_expose(t_windows *);
+int		escape_hook(int);
+int		my_putstr_error2(int, int);
+int		my_notice(void);
+int		my_exemple(void);
+int		view_to_list(char *, int *, t_list **);
+int		plan_to_list(char *, int *, t_list **);
+int		my_expose(t_windows *);
+int		my_strcmp(char *, char *, int);
+int		add_top_list(t_list **, int);
+int		add_bot_list(t_list **, int);
+int		form_to_list(char *, int *, t_list **);
+int		correct_form(char *, int);
+int		put_pix_picture(t_windows *, int, int, int);
+int		add_klist(t_kist **, double, t_list *);
+int		shadow_on(t_vec *, t_list **, t_vec *, t_kist *);
+int		find_a_k(t_kist **);
+int		count_decimal(char *, int);
+unsigned int	get_my_color(unsigned char, unsigned char, unsigned char);
+unsigned int	calc_pix(t_fen, t_list **, t_kist **, t_list);
+unsigned int	light_my_color(t_kist *, t_vec, t_vec, t_list **);
+unsigned int	treat_the_color(t_kist *, double, t_light *);
+double		my_get_double(char *, int);
 t_list		make_my_view(t_list **);
 t_vec		check_normal(t_kist *, t_vec);
 t_vec		treat_vec(int, int, t_list);
+t_vec		normal_cy(t_vec, t_kist *);
+t_vec		normal_sphere(t_vec, t_kist *);
+t_vec		normal_cone(t_vec, t_kist *);
+t_vec		normal_plan(t_kist *);
 t_kist		find_low_k(t_kist **);
 
 #endif		/* !RTV1_H_ */

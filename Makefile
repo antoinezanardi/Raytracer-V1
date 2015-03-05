@@ -5,7 +5,7 @@
 ## Login   <zanard_a@epitech.net>
 ##
 ## Started on  Tue Oct 21 16:47:57 2014 Antoine Zanardi
-## Last update Sat Feb  7 17:40:03 2015 Antoine Zanardi
+## Last update Thu Mar  5 16:23:18 2015 Antoine Zanardi
 ##
 
 DEBUG	=	no
@@ -14,28 +14,34 @@ ifeq ($(DEBUG), yes)
 CFLAGS	+=	-g -Wall -Wextra
 endif
 
+ifeq ($(CC), clang)
+CFLAGS	=	-Weverything -Wno-padded
+endif
+
 LIB_PA	=	./lib/my/
 
 NAME	=	rtv1
 
-SRCS	=	main.c \
-		error.c \
-		parsing.c \
-		parse_line.c \
-		fc.c \
-		param_to_list.c \
-		v_to_elem.c \
-		treat.c \
-		treat_form.c \
-		treat_k.c \
-		translation.c \
-		picture.c \
-		light.c \
-		normal.c \
-		view.c \
-		get_double.c \
-		color.c \
-		shadow.c \
+SRC_PA	=	./srcs/
+
+SRCS	=	$(SRC_PA)main.c \
+		$(SRC_PA)error.c \
+		$(SRC_PA)parsing.c \
+		$(SRC_PA)parse_line.c \
+		$(SRC_PA)fc.c \
+		$(SRC_PA)param_to_list.c \
+		$(SRC_PA)v_to_elem.c \
+		$(SRC_PA)treat.c \
+		$(SRC_PA)treat_form.c \
+		$(SRC_PA)treat_k.c \
+		$(SRC_PA)translation.c \
+		$(SRC_PA)picture.c \
+		$(SRC_PA)light.c \
+		$(SRC_PA)normal.c \
+		$(SRC_PA)view.c \
+		$(SRC_PA)get_double.c \
+		$(SRC_PA)color.c \
+		$(SRC_PA)shadow.c \
 
 SRCS_LI	=	$(LIB_PA)my_getnbr.c \
 		$(LIB_PA)my_putchar.c \
