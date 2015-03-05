@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Sat Feb  7 10:51:19 2015 Antoine Zanardi
-** Last update Thu Mar  5 16:51:50 2015 Antoine Zanardi
+** Last update Thu Mar  5 17:24:17 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -39,7 +39,9 @@ char		*pick_decimal(char *str, int compt_str)
   while (str[compt_str] != '.')
     compt_str++;
   compt_str++;
-  if ((dec = malloc(sizeof(char) * (unsigned long)count_decimal(str, compt_save) + 1)) == NULL)
+  if ((dec = malloc(sizeof(char) *
+		    (unsigned long)count_decimal(str, compt_save)
+		    + 1)) == NULL)
     my_putstr_error(10, 0);
   compt_dec = 0;
   while (str[compt_str] != ',')
