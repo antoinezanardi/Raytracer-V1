@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Thu Feb  5 17:15:24 2015 Antoine Zanardi
-** Last update Thu Mar  5 16:54:45 2015 Antoine Zanardi
+** Last update Mon Mar  9 10:12:25 2015 Antoine Zanardi
 */
 
 #include	<math.h>
@@ -58,12 +58,12 @@ unsigned int	light_my_color(t_kist *k, t_vec vec, t_vec view, t_list **list)
   calc_pt_inter(&pt, &view, k, &vec);
   calc_vec_dir(&light, &pt, &vec_dir);
   if (shadow_on(&vec_dir, list, &pt, k) == 1)
-    return (get_my_color(0, 0, 0));
+    return (brillance(k, 0.0, &light));
   normale = check_normal(k, pt);
   normalize(&normale);
   normalize(&vec_dir);
   cos = (normale.x * vec_dir.x + normale.y * vec_dir.y + normale.z * vec_dir.z);
-  if (cos > 0.00001)
-    return (treat_the_color(k, cos, &light));
-  return (get_my_color(0, 0, 0));
+  if (cos < 0.00001)
+    cos = 0.000;
+  return (brillance(k, cos, &light));
 }

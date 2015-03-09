@@ -5,10 +5,11 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Wed Feb  4 09:33:50 2015 Antoine Zanardi
-** Last update Thu Mar  5 17:11:48 2015 Antoine Zanardi
+** Last update Mon Mar  9 09:49:40 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
+#include	<math.h>
 #include	"rtv1.h"
 #include	"my.h"
 
@@ -16,7 +17,7 @@ t_vec		treat_vec(int x, int y, t_list oeil)
 {
   t_vec		vec;
 
-  vec.x = (double)LARG / 2.0;
+  vec.x = (double)(LARG / 2.0) / tan((25 * PI) / 180);
   vec.y = (double)LARG / 2.0 - (double)x;
   vec.z = (double)HAUT / 2.0 - (double)y;
   rotation_x(&(vec.y), &(vec.z), D_R(oeil.x_r));

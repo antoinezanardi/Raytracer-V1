@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 11:03:03 2015 Antoine Zanardi
-** Last update Thu Mar  5 17:19:59 2015 Antoine Zanardi
+** Last update Mon Mar  9 10:23:02 2015 Antoine Zanardi
 */
 
 #ifndef		RTV1_H_
@@ -14,6 +14,7 @@
 # define	HAUT		720
 # define	LARG		1280
 # define	BUFFER_SIZE	4096
+# define	PI		3.14159265
 # define	D_R(nb)		((3.14 * (double)nb) / 180.0)
 # define	XB		(view.x - ball->x)
 # define	YB		(view.y - ball->y)
@@ -127,6 +128,8 @@ void		convert_my_color(t_kist *, char *);
 void		correct_file(char *);
 void		init_list(t_list **, int, char **);
 void		init_my_mlx(t_windows *);
+void		check_seuil(t_color *, t_color *);
+void		calc_seuil(t_color *, t_color *);
 char		*pick_nb(char *, int *);
 char		*pick_decimal(char *, int);
 int		my_expose(t_windows *);
@@ -150,7 +153,7 @@ int		count_decimal(char *, int);
 unsigned int	get_my_color(unsigned char, unsigned char, unsigned char);
 unsigned int	calc_pix(t_fen, t_list **, t_kist **, t_list);
 unsigned int	light_my_color(t_kist *, t_vec, t_vec, t_list **);
-unsigned int	treat_the_color(t_kist *, double, t_light *);
+unsigned int	brillance(t_kist *, double, t_light *);
 double		my_get_double(char *, int);
 t_list		make_my_view(t_list **);
 t_vec		check_normal(t_kist *, t_vec);
