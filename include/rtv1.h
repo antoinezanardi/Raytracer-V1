@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 11:03:03 2015 Antoine Zanardi
-** Last update Mon Mar  9 10:23:02 2015 Antoine Zanardi
+** Last update Wed Mar 11 09:25:54 2015 Antoine Zanardi
 */
 
 #ifndef		RTV1_H_
@@ -122,7 +122,7 @@ void		convert_view(t_list, t_vec *);
 void		normalize(t_vec *);
 void		calc_pt_inter(t_vec *, t_vec *, t_kist *, t_vec *);
 void		calc_vec_dir(t_light *, t_vec *, t_vec *);
-void		init_the_light(t_light *);
+//void		init_the_light(t_light *);
 void		translation(t_vec *, t_list *);
 void		convert_my_color(t_kist *, char *);
 void		correct_file(char *);

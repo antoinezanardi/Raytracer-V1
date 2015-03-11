@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Sat Feb  7 15:56:35 2015 Antoine Zanardi
-** Last update Mon Mar  9 10:37:02 2015 Antoine Zanardi
+** Last update Wed Mar 11 09:51:01 2015 Antoine Zanardi
 */
 
 #include	<math.h>
@@ -45,5 +45,8 @@ unsigned int	brillance(t_kist *k, double cos, t_light *light)
   color.green = ((unsigned char)(color.green * cos));
   color.blue = ((unsigned char)(color.blue * cos));
   check_seuil(&seuil, &color);
+  color.red /= 2;
+  color.green /= 2;
+  color.blue /= 2;
   return (get_my_color(color.red, color.green, color.blue));
 }

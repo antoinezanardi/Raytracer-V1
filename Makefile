@@ -5,7 +5,7 @@
 ## Login   <zanard_a@epitech.net>
 ##
 ## Started on  Tue Oct 21 16:47:57 2014 Antoine Zanardi
-## Last update Thu Mar  5 16:23:18 2015 Antoine Zanardi
+## Last update Mon Mar  9 10:42:44 2015 Antoine Zanardi
 ##
 
 DEBUG	=	no
@@ -40,7 +40,7 @@ SRCS	=	$(SRC_PA)main.c \
 		$(SRC_PA)normal.c \
 		$(SRC_PA)view.c \
 		$(SRC_PA)get_double.c \
-		$(SRC_PA)color.c \
+		$(SRC_PA)brillance.c \
 		$(SRC_PA)shadow.c \
 
 SRCS_LI	=	$(LIB_PA)my_getnbr.c \
