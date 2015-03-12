@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Thu Feb  5 17:48:02 2015 Antoine Zanardi
-** Last update Fri Feb 20 17:33:22 2015 Antoine Zanardi
+** Last update Wed Mar 11 17:52:24 2015 Antoine Zanardi
 */
 
 #include	<stdlib.h>
@@ -59,8 +59,6 @@ t_vec		normal_plan(t_kist *k)
   rotation_x(&normale.y, &normale.z, D_R(k->obj->x_r));
   rotation_y(&normale.x, &normale.z, D_R(k->obj->y_r));
   rotation_z(&normale.x, &normale.y, D_R(k->obj->z_r));
-  normale.x = normale.x - (double)k->obj->x;
-  normale.y = normale.y - (double)k->obj->y;
   normale.z = normale.z - (double)k->obj->z;
   return (normale);
 }

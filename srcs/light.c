@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Thu Feb  5 17:15:24 2015 Antoine Zanardi
-** Last update Wed Mar 11 10:14:55 2015 Antoine Zanardi
+** Last update Wed Mar 11 17:59:27 2015 Antoine Zanardi
 */
 
 #include	<math.h>
@@ -38,15 +38,15 @@ void		calc_vec_dir(t_light *light, t_vec *pt, t_vec *vec_dir)
 
 void		init_the_light(t_light *light, t_light *light_s)
 {
-  light->x = 100.0;
+  light->x = 0.0;
   light->y = 0.0;
   light->z = 100.0;
   light->b_r = 255.0;
   light->b_g = 255.0;
   light->b_b = 255.0;
-  light_s->x = 100.0;
-  light_s->y = 100.0;
-  light_s->z = 100.0;
+  light_s->x = 150.0;
+  light_s->y = 0.0;
+  light_s->z = 200.0;
   light_s->b_r = 255.0;
   light_s->b_g = 255.0;
   light_s->b_b = 255.0;
@@ -63,9 +63,9 @@ unsigned int	light_my_color(t_kist *k, t_vec vec, t_vec view, t_list **list)
   int		compt_tab;
 
   color = 0;
-  compt_tab = 0;
+  compt_tab = -1;
   init_the_light(&tab_light[0], &tab_light[1]);
-  while (compt_tab < 2)
+  while (++compt_tab < 2)
     {
       calc_pt_inter(&pt, &view, k, &vec);
       calc_vec_dir(&tab_light[compt_tab], &pt, &vec_dir);
@@ -74,14 +74,9 @@ unsigned int	light_my_color(t_kist *k, t_vec vec, t_vec view, t_list **list)
       else
 	{
 	  normale = check_normal(k, pt);
-	  normalize(&normale);
-	  normalize(&vec_dir);
-	  cos = (normale.x * vec_dir.x + normale.y * vec_dir.y + normale.z * vec_dir.z);
-	  if (cos < 0.00001)
-	    cos = 0.000;
+	  calc_normal(&cos, &normale, &vec_dir);
 	  color += brillance(k, cos, &tab_light[compt_tab]);
 	}
-      compt_tab++;
     }
   return (color);
 }

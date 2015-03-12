@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Sat Feb  7 15:56:35 2015 Antoine Zanardi
-** Last update Wed Mar 11 09:51:01 2015 Antoine Zanardi
+** Last update Wed Mar 11 17:59:03 2015 Antoine Zanardi
 */
 
 #include	<math.h>
@@ -27,6 +27,16 @@ void		calc_seuil(t_color *seuil, t_color *color)
   seuil->red = (color->red * (25.0 / 100.0));
   seuil->green = (color->green * (25.0 / 100.0));
   seuil->blue = (color->blue * (25.0 / 100.0));
+}
+
+void		calc_normal(double *cos, t_vec *normale, t_vec *vec_dir)
+{
+  normalize(normale);
+  normalize(vec_dir);
+  *cos = (normale->x * vec_dir->x + normale->y * vec_dir->y +
+	 normale->z * vec_dir->z);
+  if (*cos < 0.00001)
+    *cos = 0.000;
 }
 
 unsigned int	brillance(t_kist *k, double cos, t_light *light)
