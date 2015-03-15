@@ -5,7 +5,7 @@
 ** Login   <zanard_a@epitech.net>
 **
 ** Started on  Mon Feb  2 11:03:03 2015 Antoine Zanardi
-** Last update Wed Mar 11 17:51:57 2015 Antoine Zanardi
+** Last update Sun Mar 15 13:22:15 2015 Antoine Zanardi
 */
 
 #ifndef		RTV1_H_
@@ -130,6 +130,7 @@ void		init_list(t_list **, int, char **);
 void		init_my_mlx(t_windows *);
 void		check_seuil(t_color *, t_color *);
 void		calc_seuil(t_color *, t_color *);
+void		calc_normal(double *, t_vec *, t_vec *);
 char		*pick_nb(char *, int *);
 char		*pick_decimal(char *, int);
 int		my_expose(t_windows *);

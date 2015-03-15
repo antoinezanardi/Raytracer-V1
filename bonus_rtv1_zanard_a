@@ -1,0 +1,9 @@
+BONUS RTV1 zanard_a:
+
+-> Le RTV1 se lance avec un fichier de config, contenu dans "/scenes"
+-> ./rtv1 --help donne une aide pour faire son propre fichier de config.
+-> ./rtv1 --exemple donne un exemple de fichier de config.
+-> La brillance est disponible (changeable dans le fichier de config).
+-> Le multispot est disponible avec le multiombres, mais non-changeable.
+-> La position de l'oeil peut être changée dans le fichier de config.
+-> Une lumière d'ambiance est mise en place, les points d'ombres ne sont pas 100% noirs mais prennent la couleur de l'objet.
